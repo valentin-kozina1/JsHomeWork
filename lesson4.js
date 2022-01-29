@@ -5,7 +5,43 @@
 - Второй параметр обязателен и может принимать только функцию*/
 
 const arr = [1,2,3];
-//forEach(arr, function(item, i, arr) {});
+forEach(arr, function(item, i, arr) {
+	console.log('a[' + i + '] = ' + item + ' array :' + arr);
+});
+
+function forEach(arr) {
+	arr.map(function(num) {console.log(num)})
+}
+
+arr.forEach(function(item, i, arr))
+
+/*
+function logArrayElements(element, index, array) {
+  console.log('a[' + index + '] = ' + element);
+}
+
+const arr = [1,2,3];
+
+function forEach(arr, logArrayElements) {
+	arr.map(function(num){
+		logArrayElements(num)
+	})
+}
+
+forEach(arr, logArrayElements)
+
+arr.map(function(num) {
+  console.log("Задание 1.   item : " + num + " index : " + arr.indexOf(num) + " array : " + arr)
+});
+
+
+
+// Обратите внимание на пропуск по индексу 2, там нет элемента, поэтому он не посещается
+[2, 5, , 9].forEach(logArrayElements);
+// логи:
+// a[0] = 2
+// a[1] = 5
+// a[3] = 9*/
 
 /*2 Создать имплементацию функции `filter`, логика работы 
 такая же как и у родного метода.
@@ -56,7 +92,7 @@ const acc5 = 0;
 
 const arr6 = [1,2,3];
 const acc6 = 0;
-//reduceRight(arr, function(acc, item, i, arr) {}, acc);
+arr6.reduceRight(arr6, function(acc, item, i, arr) {}, acc6);
 
 /*7 Код ниже получает из массива строк новый массив, 
 содержащий их длины:*/
@@ -122,7 +158,21 @@ console.log("Задание 8 :" + f(arr85)); // 3
 строку, объект, массив
 - Второй параметр обязателен и может принимать только число*/
 
-arrayFill('x',5); // [x,x,x,x,x]
+function getClass(obj) {
+  return {}.toString.call(obj).slice(8, -1);
+}
+
+function arrayFill(arg, num) {
+	if (typeof arg != "number" && typeof arg != "string" && getClass(arg) != "object" && getClass(arg) != "array" || typeof arg == "undefined") {return "неверный первый параметр"}
+		else
+			if (typeof num != "number" || typeof num == "undefined") 
+				{return "неверный второй параметр"}
+			else {
+				var arr9 = Array(num);
+				return arr9.fill(arg, 0, num);
+			}
+}
+console.log("Задание 9 :" + arrayFill('x', 5)) ; // [x,x,x,x,x]
 
 /*10 Создать имплементацию функции `reverse`, которая принимает 
 массив в качестве параметра, а возвращает массив только в 
@@ -131,5 +181,17 @@ arrayFill('x',5); // [x,x,x,x,x]
 - Первый параметр обязателен и может принимать только массив
 - Генерировать ошибку если был передан пустой массив*/
 
-const arr10 = [3,2,1];
-reverse(arr10); // [1,2,3]
+function reverse(arg) {
+	var arr11 = Array();
+	if (getClass(arg) != "Array" || typeof arg == "undefined") {return "неверный первый параметр"}
+		else arg.map(function(num){
+			var index = arg.indexOf(num);
+			var indexNew = (arg.length-1) - index;
+			arr11[indexNew] = num;
+		})
+			return arr11;
+}
+
+
+const arr10 = [5,4,3,2,1];
+console.log("Задание 10 :" + reverse(arr10)); // [1,2,3]
